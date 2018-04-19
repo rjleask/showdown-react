@@ -5,6 +5,10 @@ export default {
     return axios.get("/api/players");
   },
   searchPlayers: function(input) {
-    return axios.get("/api/search/" + input);
+    let config = {
+      headers: { query: input }
+    };
+    console.log(input);
+    return axios.post("/api/search", config);
   }
 };

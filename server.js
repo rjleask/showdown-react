@@ -10,142 +10,143 @@ const routes = require("./routes");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static("client/build"));
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(routes);
 
-app.get("/game", (req, res) => {
-  res.render("game");
-});
-app.post("/", function(req, res) {
-  db.Masters.findAll({
-    where: {
-      nameFirst: req.body.first,
-      nameLast: req.body.last
-    }
-  }).then(function(data) {
-    db.Players.findAll({
-      where: {
-        playerID: data[0].playerID
-      }
-    }).then(function(playerInfo) {
-      res.send(playerInfo);
-    });
-  });
-});
-app.get("/", function(req, res) {
-  db.Pitchings.findAll({
-    where: {
-      teamID: "BOS",
-      yearID: 2016
-    }
-  }).then(function(data) {
-    let bigPitchers = [];
-    data.forEach(function(player) {
-      if (player.G > 20) {
-        bigPitchers.push(player);
-      }
-    });
-    // getPitcherInfo();
-    res.render("index", { players: bigPitchers });
-  });
-  let playerData = [];
-  db.Players.findAll({}).then(function(data) {
-    // console.log(data);
-    for (let i = 0; i < data.length; i++) {
-      playerData.push(data[i]);
-    }
-    // console.log(playerData);
-    res.send(JSON.stringify(playerData));
-  });
-});
-function getPitcherInfo() {
-  inquirer
-    .prompt([
-      {
-        name: "playerID",
-        message: "whats the players id?"
-      },
-      {
-        name: "name",
-        message: "whats the players name?"
-      },
-      {
-        name: "team",
-        message: "whats the teams name?"
-      },
-      {
-        name: "control",
-        message: "control?"
-      },
-      {
-        name: "ip",
-        message: "ip?"
-      },
-      {
-        name: "position",
-        message: "position?"
-      },
-      {
-        name: "cost",
-        message: "whats the cost?"
-      },
-      {
-        name: "pu",
-        message: "outPU?"
-      },
-      {
-        name: "gb",
-        message: "outGB?"
-      },
-      {
-        name: "fb",
-        message: "out fb?"
-      },
-      {
-        name: "so",
-        message: "out SO?"
-      },
-      {
-        name: "walk",
-        message: "walks?"
-      },
-      {
-        name: "single",
-        message: "whats the singles?"
-      },
-      {
-        name: "double",
-        message: "doubles?"
-      },
-      {
-        name: "homers",
-        message: "homers?"
-      },
-      {
-        name: "pic",
-        message: "pic?"
-      }
-    ])
-    .then(function(answers) {
-      db.Pitchers.create({
-        playerID: answers.playerID,
-        playerName: answers.name,
-        team: answers.team,
-        control: parseInt(answers.control),
-        IP: parseInt(answers.ip),
-        position: answers.position,
-        cost: parseInt(answers.cost),
-        outPU: answers.pu,
-        outGB: answers.gb,
-        outFB: answers.fb,
-        outSO: answers.so,
-        walk: answers.walk,
-        single: answers.single,
-        double: answers.double,
-        homer: answers.homers,
-        pic: answers.pic
-      });
-    });
-}
+// app.get("/game", (req, res) => {
+//   res.render("game");
+// });
+// app.post("/", function(req, res) {
+//   db.Masters.findAll({
+//     where: {
+//       nameFirst: req.body.first,
+//       nameLast: req.body.last
+//     }
+//   }).then(function(data) {
+//     db.Players.findAll({
+//       where: {
+//         playerID: data[0].playerID
+//       }
+//     }).then(function(playerInfo) {
+//       res.send(playerInfo);
+//     });
+//   });
+// });
+// app.get("/", function(req, res) {
+//   db.Pitchings.findAll({
+//     where: {
+//       teamID: "BOS",
+//       yearID: 2016
+//     }
+//   }).then(function(data) {
+//     let bigPitchers = [];
+//     data.forEach(function(player) {
+//       if (player.G > 20) {
+//         bigPitchers.push(player);
+//       }
+//     });
+//     // getPitcherInfo();
+//     res.render("index", { players: bigPitchers });
+//   });
+//   let playerData = [];
+//   db.Players.findAll({}).then(function(data) {
+//     // console.log(data);
+//     for (let i = 0; i < data.length; i++) {
+//       playerData.push(data[i]);
+//     }
+//     // console.log(playerData);
+//     res.send(JSON.stringify(playerData));
+//   });
+// });
+// function getPitcherInfo() {
+//   inquirer
+//     .prompt([
+//       {
+//         name: "playerID",
+//         message: "whats the players id?"
+//       },
+//       {
+//         name: "name",
+//         message: "whats the players name?"
+//       },
+//       {
+//         name: "team",
+//         message: "whats the teams name?"
+//       },
+//       {
+//         name: "control",
+//         message: "control?"
+//       },
+//       {
+//         name: "ip",
+//         message: "ip?"
+//       },
+//       {
+//         name: "position",
+//         message: "position?"
+//       },
+//       {
+//         name: "cost",
+//         message: "whats the cost?"
+//       },
+//       {
+//         name: "pu",
+//         message: "outPU?"
+//       },
+//       {
+//         name: "gb",
+//         message: "outGB?"
+//       },
+//       {
+//         name: "fb",
+//         message: "out fb?"
+//       },
+//       {
+//         name: "so",
+//         message: "out SO?"
+//       },
+//       {
+//         name: "walk",
+//         message: "walks?"
+//       },
+//       {
+//         name: "single",
+//         message: "whats the singles?"
+//       },
+//       {
+//         name: "double",
+//         message: "doubles?"
+//       },
+//       {
+//         name: "homers",
+//         message: "homers?"
+//       },
+//       {
+//         name: "pic",
+//         message: "pic?"
+//       }
+//     ])
+//     .then(function(answers) {
+//       db.Pitchers.create({
+//         playerID: answers.playerID,
+//         playerName: answers.name,
+//         team: answers.team,
+//         control: parseInt(answers.control),
+//         IP: parseInt(answers.ip),
+//         position: answers.position,
+//         cost: parseInt(answers.cost),
+//         outPU: answers.pu,
+//         outGB: answers.gb,
+//         outFB: answers.fb,
+//         outSO: answers.so,
+//         walk: answers.walk,
+//         single: answers.single,
+//         double: answers.double,
+//         homer: answers.homers,
+//         pic: answers.pic
+//       });
+//     });
+// }
 // app.get("/", function(req, res) {
 //   db.Battings.findAll({
 //     where: {

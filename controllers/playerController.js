@@ -5,10 +5,11 @@ module.exports = {
     db.Players.findAll({}).then(result => res.json(result));
   },
   searchPlayers: (req, res) => {
+    console.log(req.body.query);
     db.Players.findAll({
       where: {
         playerName: {
-          $ilike: "%" + req.body.input
+          $like: req.body.query + "%"
         }
       }
     }).then(result => res.json(result));
