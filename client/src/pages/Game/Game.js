@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Game.css";
+import border from "./border1.jpg";
 import API from "../../utils/API.js";
 const url = "http://localhost:3001/api/players";
 

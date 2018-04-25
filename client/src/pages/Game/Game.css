@@ -51,9 +51,9 @@ img{
   margin:10px;
 }
 .playingcard-box{
-  background:black;
-  background-image: url(border2.png);
-  border: 14px solid black;
+  border: 5px solid black;
+  /* animation: 3s pulseBorder infinite; */
+  box-shadow: 0px 0px 10px 7px rgb(255, 0, 0), 0px 0px 10px 7px #fcfcfc;
   width: 95%;
   max-height: 100%;
   margin: 0 auto;
@@ -76,8 +76,19 @@ img{
   margin: 0;
   padding: 0;
   text-align: center;
-  color: black;
+  color: #40f436;
   width: 100%;
-  background: rgb(11, 59, 243);
+  background: rgb(4, 4, 4);
   position: absolute;
+}
+@keyframes pulseBorder {
+  0% {
+    border-color: red;
+  }
+  50%{
+    border-color: black
+  }
+  100%{
+    border-color: red;
+  }
 }
