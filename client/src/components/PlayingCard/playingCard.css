@@ -1,0 +1,31 @@
+.playingcard-box{
+  border: 5px solid black;
+  /* animation: 3s pulseBorder infinite; */
+  box-shadow: 0px 0px 10px 7px rgb(255, 0, 0), 0px 0px 10px 7px #fcfcfc;
+  width: 95%;
+  max-height: 100%;
+  margin: 0 auto;
+  border-radius: 4%;
+  position: relative;
+  overflow: hidden;
+}
+.on-base{
+    position: absolute;
+    bottom:0;
+    right:0;
+    padding:8%;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 20px;
+    color:rgb(11, 243, 11);
+    background: black;
+}
+.character-name{
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: #40f436;
+  width: 100%;
+  background: rgb(4, 4, 4);
+  position: absolute;
+}

@@ -4,6 +4,9 @@ module.exports = {
   getPlayers: (req, res) => {
     db.Players.findAll({}).then(result => res.json(result));
   },
+  getTeams: (req, res) => {
+    db.Players.findAll({}).then(result => res.json(result));
+  },
   searchPlayers: (req, res) => {
     console.log(req.body.query);
     db.Players.findAll({

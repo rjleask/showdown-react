@@ -5,16 +5,6 @@ body{
 img{
   max-height:100%;
 }
-.disappear{
-  transition: all 0.5s ease-in-out;
-  max-height: 0;
-  overflow: hidden;
-}
-.reappear{
-  transition: all 0.5s ease-in-out;
-  overflow: hidden;
-  max-height: 600px;
-}
 .page-wrapper{
   width: 100%;
 }
@@ -50,37 +40,40 @@ img{
   justify-content: space-between;
   margin:10px;
 }
-.playingcard-box{
-  border: 5px solid black;
-  /* animation: 3s pulseBorder infinite; */
-  box-shadow: 0px 0px 10px 7px rgb(255, 0, 0), 0px 0px 10px 7px #fcfcfc;
-  width: 95%;
-  max-height: 100%;
-  margin: 0 auto;
-  border-radius: 4%;
-  position: relative;
-  overflow: hidden;
-}
-.on-base{
-    position: absolute;
-    bottom:0;
-    right:0;
-    padding:8%;
-    border-radius: 50%;
-    font-weight: bold;
-    font-size: 20px;
-    color:rgb(11, 243, 11);
-    background: black;
-}
-.character-name{
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  color: #40f436;
-  width: 100%;
-  background: rgb(4, 4, 4);
+.show-roster{
   position: absolute;
+  bottom:0;
+  left:0
 }
+.navbar-fixed-side-right {
+  right: 0;
+}
+.navbar-fixed-side {
+  position: fixed;
+  border-width: 0;
+  z-index: 1030;
+  height: 100vh;
+  min-width: 0px;
+  max-width: 200px;
+  margin-bottom: 0;
+  border: 0px solid transparent;
+}
+.show-bullpen{
+  max-width:500px;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;  
+}
+.hide-bullpen{
+  max-width:0;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out; 
+}
+.navbar-fixed-side-right>ul{
+  list-style: none;
+  margin:0;
+  padding:10px;
+}
+
 @keyframes pulseBorder {
   0% {
     border-color: red;

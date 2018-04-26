@@ -1,15 +1,44 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Game.css";
-import border from "./border1.jpg";
 import API from "../../utils/API.js";
+import PlayingCard from "../../components/PlayingCard";
+import RosterNavs from "../../components/RosterNavs";
 const url = "http://localhost:3001/api/players";
 
 class Game extends Component {
-  state = {};
+  constructor(props) {
+    super(props);
+    this.rosterClick = this.rosterClick.bind(this);
+    this.state = { players: [] };
+  }
+
+  componentDidMount() {
+    API.getInitialTeams().then(res => {
+      this.setState({ players: res.data });
+    });
+  }
+  rosterClick = () => {
+    let rosterNav = document.querySelector(".navbar-fixed-top");
+    rosterNav.classList.remove("disappear");
+    rosterNav.classList.add("reappear");
+  };
   render() {
     return (
       <div className="game-page-wrapper">
+        <button className="show-roster" onClick={this.rosterClick}>
+          Roster
+        </button>
+        <RosterNavs />
+        <nav className="navbar navbar-default navbar-fixed-side navbar-fixed-side-right">
+          <ul>
+            <li>bill</li>
+            <li>tim</li>
+            <li>bob</li>
+            <li>jim</li>
+            <li>luke</li>
+          </ul>
+        </nav>
         <div className="base-paths-wrapper">
           <section className="flex-grid-1 top">
             <div className="base second" />
@@ -21,16 +50,7 @@ class Game extends Component {
           </section>
           <section className="flex-grid-1">
             <div className="base home">
-              <div className="playingcard-box">
-                <div className="img-box">
-                  <p className="character-name">Mookie Betts</p>
-                  <img
-                    className="img-responsive"
-                    src="http://www4.pictures.zimbio.com/gi/Mookie+Betts+Pittsburgh+Pirates+v+Boston+Red+1PqwQ4CktQyl.jpg"
-                  />
-                  <span className="on-base">10</span>
-                </div>
-              </div>
+              <PlayingCard />
             </div>
           </section>
         </div>

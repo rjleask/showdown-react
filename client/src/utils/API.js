@@ -8,7 +8,9 @@ export default {
     let config = {
       headers: { query: input }
     };
-    console.log(input);
     return axios.post("/api/search", config);
+  },
+  getInitialTeams: function() {
+    return axios.get("/api/teams");
   }
 };
