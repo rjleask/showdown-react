@@ -54,12 +54,28 @@ img{
   z-index: 1030;
   height: 100vh;
   min-width: 0px;
-  max-width: 200px;
+  max-width: 0px;
   margin-bottom: 0;
   border: 0px solid transparent;
 }
+.roster-player-choices{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2000;
+  color: #f9093e;
+  background: black;
+  width: 100%;
+  text-align: center;
+  list-style: none;
+  /* border: 5px solid #08b108; */
+  border-top: 5px solid green;
+  border-bottom: 5px solid green;
+}
 .show-bullpen{
   max-width:500px;
+  width:500px;
   overflow: hidden;
   transition: all 0.5s ease-in-out;  
 }

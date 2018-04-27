@@ -1,21 +1,33 @@
 import React, { Component } from "react";
 import "./rosterNavs.css";
 import PlayingCard from "../PlayingCard";
+import Suggestions from "../Suggestions";
 const RosterNavs = props => {
   let handleCloseRoster = () => {
     let nav = document.querySelector(".navbar-fixed-top");
     nav.classList.remove("reappear");
     nav.classList.add("disappear");
   };
+  let handleOpenBullpen = () => {
+    let navPen = document.querySelector(".navbar-fixed-side");
+    navPen.classList.remove("hide-bullpen");
+    navPen.classList.add("show-bullpen");
+  };
   return (
     <nav className="navbar navbar-default navbar-fixed-top">
       <button className="btn btn-default close-btn" onClick={handleCloseRoster}>
         Close
       </button>
-      <button className="btn btn-default bullpen">Sub/Pullpen</button>
+      <button className="btn btn-default bullpen" onClick={handleOpenBullpen}>
+        Sub/Bullpen
+      </button>
       <div className="container">
         <section className="flex-grid-team">
-          <div className="lineup-1 b-order" placeholder="number1">
+          <div
+            className="lineup-1 b-order"
+            onClick={props.handler}
+            placeholder="number1"
+          >
             <div className="batting-number">1</div>
             <PlayingCard />
           </div>
