@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-import "./playingCard.css";
-const PlayingCard = props => {
+import "./choose.css";
+const ChooseCard = props => {
   return (
     <div className="playingcard-box">
-      <div className="img-box">
+      <div className="choose-img-box">
         <p className="character-name">{props.players.playerName}</p>
-        <img className="img-responsive" src={props.players.pic} />
+        <img className="choose-img" src={props.players.pic} />
         <span className="on-base">{props.players.onBase}</span>
       </div>
     </div>
   );
 };
 
-export default PlayingCard;
+export default ChooseCard;

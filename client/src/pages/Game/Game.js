@@ -4,6 +4,8 @@ import "./Game.css";
 import API from "../../utils/API.js";
 import PlayingCard from "../../components/PlayingCard";
 import RosterNavs from "../../components/RosterNavs";
+import Carousel from "nuka-carousel";
+import ChooseCard from "../../components/ChooseCard";
 const url = "http://localhost:3001/api/players";
 
 class Game extends Component {
@@ -24,12 +26,25 @@ class Game extends Component {
     rosterNav.classList.remove("disappear");
     rosterNav.classList.add("reappear");
   };
+  checkPlayers = () => {
+    if (this.state.players[0] !== undefined) {
+      return <PlayingCard players={this.state.players[0]} />;
+    }
+  };
   handleChoosePlayer() {
     this.setState({ choosePlayer: true });
   }
   render() {
     const options = this.state.players.map(r => (
-      <li key={r.playerID}>{r.playerName}</li>
+      // <div className="card-box" key={r.playerID}>
+      //   <p>{r.playerName}</p>
+      //   <div className="roster-img-box">
+      //     <img className="img-roster-choice" src={r.pic} />
+      //   </div>
+      // </div>
+      <div key={r.playerID} className="roster-choice-box">
+        <ChooseCard players={r} />
+      </div>
     ));
     return (
       <div className="game-page-wrapper">
@@ -41,7 +56,11 @@ class Game extends Component {
           handler={this.handleChoosePlayer}
         />
         {this.state.choosePlayer ? (
-          <ul className="roster-player-choices">{options}</ul>
+          <div className="roster-player-choices">
+            <Carousel slidesToShow={3} slideWidth={0.6} cellSpacing={10}>
+              {options}
+            </Carousel>
+          </div>
         ) : (
           ""
         )}
@@ -65,9 +84,7 @@ class Game extends Component {
             <div className="base first" />
           </section>
           <section className="flex-grid-1">
-            <div className="base home">
-              <PlayingCard />
-            </div>
+            <div className="base home">{this.checkPlayers()}</div>
           </section>
         </div>
       </div>

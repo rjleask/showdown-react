@@ -72,6 +72,8 @@ img{
   /* border: 5px solid #08b108; */
   border-top: 5px solid green;
   border-bottom: 5px solid green;
+  display:flex;
+  justify-content: space-evenly;
 }
 .show-bullpen{
   max-width:500px;
@@ -88,6 +90,13 @@ img{
   list-style: none;
   margin:0;
   padding:10px;
+}
+.roster-choice-box{
+  height:210px;
+  width: 180px;
+}
+.slider-control-bottomcenter{
+  display: none;
 }
 
 @keyframes pulseBorder {
