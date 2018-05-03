@@ -42,3 +42,6 @@
   overflow: hidden;
   max-height: 600px;
 }
+.highlight {
+  border:5px solid gold;
+}

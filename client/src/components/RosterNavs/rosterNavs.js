@@ -24,12 +24,16 @@ const RosterNavs = props => {
       <div className="container">
         <section className="flex-grid-team">
           <div
-            className="lineup-1 b-order"
+            className={`lineup-1 b-order ${props.highlight}`}
             onClick={props.handler}
             placeholder="number1"
           >
             <div className="batting-number">1</div>
-            {/* <PlayingCard /> */}
+            {props.highlightedPlayer !== undefined ? (
+              <PlayingCard players={props.highlightedPlayer} />
+            ) : (
+              ""
+            )}
           </div>
           <div className="lineup-2 b-order">
             <div className="batting-number">2</div>

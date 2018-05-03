@@ -12,8 +12,14 @@ class Game extends Component {
   constructor(props) {
     super(props);
     this.rosterClick = this.rosterClick.bind(this);
+    this.choosePlayerOrder = this.choosePlayerOrder.bind(this);
     this.handleChoosePlayer = this.handleChoosePlayer.bind(this);
-    this.state = { players: [], choosePlayer: false };
+    this.state = {
+      players: [],
+      choosePlayer: false,
+      lineup: [],
+      highlighted: "no-highlight"
+    };
   }
 
   componentDidMount() {
@@ -26,24 +32,33 @@ class Game extends Component {
     rosterNav.classList.remove("disappear");
     rosterNav.classList.add("reappear");
   };
+  // controls which players are added to the lineup and highlights
+  // triggered in the rosterNav
+  choosePlayerOrder = player => {
+    console.log(player.target.src);
+    this.setState({ highlighted: "no-highlight" });
+    for (let i = 0; i < this.state.players.length; i++) {
+      if (this.state.players[i].pic === player.target.src) {
+        console.log(this.state.players[i]);
+        let playerIndex = this.state.players.splice(i, 1);
+        this.state.lineup.push(playerIndex[0]);
+        this.setState({ choosePlayer: false });
+      }
+    }
+  };
   checkPlayers = () => {
     if (this.state.players[0] !== undefined) {
       return <PlayingCard players={this.state.players[0]} />;
     }
   };
+  // highlights the lineup spot to be filled and changes state
   handleChoosePlayer() {
-    this.setState({ choosePlayer: true });
+    this.setState({ choosePlayer: true, highlighted: "highlight" });
   }
   render() {
     const options = this.state.players.map(r => (
-      // <div className="card-box" key={r.playerID}>
-      //   <p>{r.playerName}</p>
-      //   <div className="roster-img-box">
-      //     <img className="img-roster-choice" src={r.pic} />
-      //   </div>
-      // </div>
       <div key={r.playerID} className="roster-choice-box">
-        <ChooseCard players={r} />
+        <ChooseCard action={this.choosePlayerOrder} players={r} />
       </div>
     ));
     return (
@@ -54,6 +69,8 @@ class Game extends Component {
         <RosterNavs
           players={this.state.players}
           handler={this.handleChoosePlayer}
+          highlight={this.state.highlighted}
+          highlightedPlayer={this.state.lineup[this.state.lineup.length - 1]}
         />
         {this.state.choosePlayer ? (
           <div className="roster-player-choices">

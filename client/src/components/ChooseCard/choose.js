@@ -5,7 +5,11 @@ const ChooseCard = props => {
     <div className="playingcard-box">
       <div className="choose-img-box">
         <p className="character-name">{props.players.playerName}</p>
-        <img className="choose-img" src={props.players.pic} />
+        <img
+          className="choose-img"
+          onClick={props.action}
+          src={props.players.pic}
+        />
         <span className="on-base">{props.players.onBase}</span>
       </div>
     </div>
