@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./rosterNavs.css";
-import PlayingCard from "../PlayingCard";
+import RosterCard from "../RosterCard";
 import Suggestions from "../Suggestions";
 const RosterNavs = props => {
   let handleCloseRoster = () => {
@@ -30,7 +30,7 @@ const RosterNavs = props => {
           >
             <div className="batting-number">1</div>
             {props.highlightedPlayer !== undefined ? (
-              <PlayingCard players={props.highlightedPlayer} />
+              <RosterCard players={props.highlightedPlayer} />
             ) : (
               ""
             )}

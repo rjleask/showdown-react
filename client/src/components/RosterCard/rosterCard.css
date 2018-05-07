@@ -1,0 +1,12 @@
+.roster-img-box{
+  height: 160px;
+}
+.rostercard-img{
+  height:100%;
+  max-width: 100%;
+  margin:0 auto;
+  display: block;
+}
+.roster-chr-name{
+  font-size: 12px;
+}

@@ -5,7 +5,7 @@ const PlayingCard = props => {
     <div className="playingcard-box">
       <div className="img-box">
         <p className="character-name">{props.players.playerName}</p>
-        <img className="img-responsive" src={props.players.pic} />
+        <img className="playingcard-img" src={props.players.pic} />
         <span className="on-base">{props.players.onBase}</span>
       </div>
     </div>
