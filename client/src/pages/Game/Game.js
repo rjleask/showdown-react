@@ -18,7 +18,8 @@ class Game extends Component {
       players: [],
       choosePlayer: false,
       lineup: [],
-      highlighted: "no-highlight"
+      highlighted: "no-highlight",
+      highlightedClass: ""
     };
   }
 
@@ -35,13 +36,13 @@ class Game extends Component {
   // controls which players are added to the lineup and highlights
   // triggered in the rosterNav
   choosePlayerOrder = player => {
-    console.log(player.target.src);
     this.setState({ highlighted: "no-highlight" });
     for (let i = 0; i < this.state.players.length; i++) {
       if (this.state.players[i].pic === player.target.src) {
         console.log(this.state.players[i]);
         let playerIndex = this.state.players.splice(i, 1);
         this.state.lineup.push(playerIndex[0]);
+        console.log(this.state.lineup);
         this.setState({ choosePlayer: false });
       }
     }
@@ -52,8 +53,13 @@ class Game extends Component {
     }
   };
   // highlights the lineup spot to be filled and changes state
-  handleChoosePlayer() {
-    this.setState({ choosePlayer: true, highlighted: "highlight" });
+  handleChoosePlayer(e) {
+    console.log(e.target.classList[0]);
+    this.setState({
+      choosePlayer: true,
+      highlightedClass: e.target.classList[0],
+      highlighted: "highlight"
+    });
   }
   render() {
     const options = this.state.players.map(r => (
@@ -70,6 +76,7 @@ class Game extends Component {
           players={this.state.players}
           handler={this.handleChoosePlayer}
           highlight={this.state.highlighted}
+          highlightedClass={this.state.highlightedClass}
           highlightedPlayer={this.state.lineup[this.state.lineup.length - 1]}
         />
         {this.state.choosePlayer ? (

@@ -3,6 +3,17 @@ import "./rosterNavs.css";
 import RosterCard from "../RosterCard";
 import Suggestions from "../Suggestions";
 const RosterNavs = props => {
+  const playersObject = {
+    lineupOne: "",
+    lineupTwo: "",
+    lineupThree: "",
+    lineupFour: "",
+    lineupFive: "",
+    lineupSix: "",
+    lineupSeven: "",
+    lineupEight: "",
+    lineupNine: ""
+  };
   let handleCloseRoster = () => {
     let nav = document.querySelector(".navbar-fixed-top");
     nav.classList.remove("reappear");
@@ -13,6 +24,22 @@ const RosterNavs = props => {
     navPen.classList.remove("hide-bullpen");
     navPen.classList.add("show-bullpen");
   };
+  let handleHighlightedClass = className => {
+    if (className == props.highlightedClass) {
+      return props.highlight;
+    } else {
+      return "no-highlight";
+    }
+  };
+  let handlePlayers = () => {
+    let tempClass = props.highlightedClass;
+    for (var key in playersObject) {
+      if (key === tempClass) {
+        playersObject.key = props.highlightedPlayer;
+      }
+    }
+  };
+  handlePlayers();
   return (
     <nav className="navbar navbar-default navbar-fixed-top">
       <button className="btn btn-default close-btn" onClick={handleCloseRoster}>
@@ -21,51 +48,125 @@ const RosterNavs = props => {
       <button className="btn btn-default bullpen" onClick={handleOpenBullpen}>
         Sub/Bullpen
       </button>
+
       <div className="container">
         <section className="flex-grid-team">
           <div
-            className={`lineup-1 b-order ${props.highlight}`}
+            className={`lineupOne b-order ${handleHighlightedClass(
+              "lineupOne"
+            )}`}
             onClick={props.handler}
-            placeholder="number1"
           >
-            <div className="batting-number">1</div>
+            <div className="batting-number first">1</div>
             {props.highlightedPlayer !== undefined ? (
-              <RosterCard players={props.highlightedPlayer} />
+              <RosterCard players={playersObject.lineupOne} />
             ) : (
               ""
             )}
           </div>
-          <div className="lineup-2 b-order">
-            <div className="batting-number">2</div>
-            {/* <PlayingCard /> */}
+          <div
+            className={`lineupTwo b-order ${handleHighlightedClass(
+              "lineupTwo"
+            )}`}
+            onClick={props.handler}
+          >
+            <div className="batting-number second">2</div>
+            {props.highlightedPlayer !== undefined ? (
+              <RosterCard players={playersObject.lineupTwo} />
+            ) : (
+              ""
+            )}
           </div>
-          <div className="lineup-3 b-order">
-            <div className="batting-number">3</div>
-            {/* <PlayingCard /> */}
+          <div
+            className={`lineupThree b-order ${handleHighlightedClass(
+              "lineupThree"
+            )}`}
+            onClick={props.handler}
+          >
+            <div className="batting-number third">3</div>
+            {/* {props.highlightedPlayer !== undefined ? (
+              <RosterCard players={props.highlightedPlayer} />
+            ) : (
+              ""
+            )} */}
           </div>
-          <div className="lineup-4 b-order">
-            <div className="batting-number">4</div>
-            {/* <PlayingCard /> */}
+          <div
+            className={`lineupFour b-order ${handleHighlightedClass(
+              "lineupFour"
+            )}`}
+            onClick={props.handler}
+          >
+            <div className="batting-number fourth">4</div>
+            {/* {props.highlightedPlayer !== undefined ? (
+              <RosterCard players={props.highlightedPlayer} />
+            ) : (
+              ""
+            )} */}
           </div>
-          <div className="lineup-5 b-order">
-            <div className="batting-number">5</div>
-            {/* <PlayingCard /> */}
+          <div
+            className={`lineupFive b-order ${handleHighlightedClass(
+              "lineupFive"
+            )}`}
+            onClick={props.handler}
+          >
+            <div className="batting-number fifth">5</div>
+            {/* {props.highlightedPlayer !== undefined ? (
+              <RosterCard players={props.highlightedPlayer} />
+            ) : (
+              ""
+            )} */}
           </div>
-          <div className="lineup-6 b-order">
-            <div className="batting-number">6</div>
-            {/* <PlayingCard /> */}
+          <div
+            className={`lineupSix b-order ${handleHighlightedClass(
+              "lineupSix"
+            )}`}
+            onClick={props.handler}
+          >
+            <div className="batting-number sixth">6</div>
+            {/* {props.highlightedPlayer !== undefined ? (
+              <RosterCard players={props.highlightedPlayer} />
+            ) : (
+              ""
+            )} */}
           </div>
-          <div className="lineup-7 b-order">
-            <div className="batting-number">7</div>
-            {/* <PlayingCard /> */}
+          <div
+            className={`lineupSeven b-order ${handleHighlightedClass(
+              "lineupSeven"
+            )}`}
+            onClick={props.handler}
+          >
+            <div className="batting-number seventh">7</div>
+            {/* {props.highlightedPlayer !== undefined ? (
+              <RosterCard players={props.highlightedPlayer} />
+            ) : (
+              ""
+            )} */}
           </div>
-          <div className="lineup-8 b-order">
-            <div className="batting-number">8</div>
-            {/* <PlayingCard /> */}
+          <div
+            className={`lineupEight b-order ${handleHighlightedClass(
+              "lineupEight"
+            )}`}
+            onClick={props.handler}
+          >
+            <div className="batting-number eighth">8</div>
+            {/* {props.highlightedPlayer !== undefined ? (
+              <RosterCard players={props.highlightedPlayer} />
+            ) : (
+              ""
+            )} */}
           </div>
-          <div className="lineup-9 b-order">
-            <div className="batting-number">9</div>
-            {/* <PlayingCard /> */}
+          <div
+            className={`lineupNine b-order ${handleHighlightedClass(
+              "lineupNine"
+            )}`}
+            onClick={props.handler}
+          >
+            <div className="batting-number nineth">9</div>
+            {/* {props.highlightedPlayer !== undefined ? (
+              <RosterCard players={props.highlightedPlayer} />
+            ) : (
+              ""
+            )} */}
           </div>
         </section>
       </div>
