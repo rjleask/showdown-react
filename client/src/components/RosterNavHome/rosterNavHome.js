@@ -1,23 +1,12 @@
 import React, { Component } from "react";
-import "./rosterNavs.css";
+import "./rosterNavHome.css";
 import RosterCard from "../RosterCard";
 import Suggestions from "../Suggestions";
 const RosterNavs = props => {
-  const playersObject = {
-    lineupOne: "",
-    lineupTwo: "",
-    lineupThree: "",
-    lineupFour: "",
-    lineupFive: "",
-    lineupSix: "",
-    lineupSeven: "",
-    lineupEight: "",
-    lineupNine: ""
-  };
   let handleCloseRoster = () => {
-    let nav = document.querySelector(".navbar-fixed-top");
-    nav.classList.remove("reappear");
-    nav.classList.add("disappear");
+    let nav = document.querySelector(".navbar-fixed-bottom");
+    nav.classList.remove("reappear-home");
+    nav.classList.add("disappear-home");
   };
   let handleOpenBullpen = () => {
     let navPen = document.querySelector(".navbar-fixed-side");
@@ -31,21 +20,15 @@ const RosterNavs = props => {
       return "no-highlight";
     }
   };
-  let handlePlayers = () => {
-    let tempClass = props.highlightedClass;
-    for (var key in playersObject) {
-      if (key === tempClass) {
-        playersObject.key = props.highlightedPlayer;
-      }
-    }
-  };
-  handlePlayers();
   return (
-    <nav className="navbar navbar-default navbar-fixed-top">
+    <nav className="navbar navbar-default navbar-fixed-bottom">
       <button className="btn btn-default close-btn" onClick={handleCloseRoster}>
         Close
       </button>
-      <button className="btn btn-default bullpen" onClick={handleOpenBullpen}>
+      <button
+        className="btn btn-default bullpen-home"
+        onClick={handleOpenBullpen}
+      >
         Sub/Bullpen
       </button>
 

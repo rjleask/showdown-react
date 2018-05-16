@@ -1,0 +1,47 @@
+.navbar-fixed-bottom{
+  max-height: 0px;
+  overflow: hidden;
+  min-height: 0;
+  background: black;
+  border:none;
+  margin-bottom: 0px;
+}
+.flex-grid-team{
+  display: flex;
+  justify-content: space-around;
+}
+.b-order{
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  width:180px;
+  height: 200px;
+  background: rgba(250,250,250,0.3);
+}
+
+.batting-number{
+  text-align: center;
+}
+.bullpen-home{
+  position: absolute;
+  right:0;
+  top:0;
+}
+.close-btn{
+  position: absolute;
+  left:0;
+  top:0;
+}
+.disappear-home{
+  transition: all 0.5s ease-in-out;
+  max-height: 0;
+  overflow: hidden;
+}
+.reappear-home{
+  transition: all 0.5s ease-in-out;
+  overflow: hidden;
+  max-height: 600px;
+}
+.highlight {
+  border:5px solid gold;
+}

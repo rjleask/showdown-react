@@ -6,7 +6,11 @@ const PlayingCard = props => {
       <div className="img-box">
         <p className="character-name">{props.players.playerName}</p>
         <img className="playingcard-img" src={props.players.pic} />
-        <span className="on-base">{props.players.onBase}</span>
+        <span className="on-base">
+          {props.players.onBase === undefined
+            ? props.players.control
+            : props.players.onBase}
+        </span>
       </div>
     </div>
   );

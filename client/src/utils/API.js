@@ -12,5 +12,11 @@ export default {
   },
   getInitialTeams: function() {
     return axios.get("/api/teams");
+  },
+  getPitchers: function() {
+    return axios.get("/api/pitchers");
+  },
+  addPlayer: function(data) {
+    return axios.post("/api/addPlayer", data);
   }
 };
