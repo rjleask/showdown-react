@@ -7,6 +7,8 @@ import RosterNavAway from "../../components/RosterNavAway";
 import RosterNavHome from "../../components/RosterNavHome";
 import Carousel from "nuka-carousel";
 import ChooseCard from "../../components/ChooseCard";
+import Scoreboard from "../../components/Scoreboard";
+import Modal from "../../components/Modal";
 const url = "http://localhost:3001/api/players";
 
 class Game extends Component {
@@ -131,6 +133,7 @@ class Game extends Component {
     ));
     return (
       <div className="game-page-wrapper">
+        <Modal players={this.state.players} pitchers={this.state.pitchers} />
         {/* shows away roster */}
         <button className="show-roster" onClick={this.rosterClick}>
           Roster Away
@@ -161,103 +164,10 @@ class Game extends Component {
           highlightedPlayer={this.state.lineup[this.state.lineup.length - 1]}
           newGame={this.state.newGame}
         />
-        <div className="score-board-box">
-          <div className="team-box">
-            <p>Inning</p>
-            <p>Home</p>
-            <p>Away</p>
-          </div>
-          <section className="inning-section inning-one">
-            <div className="inning-box">
-              <p className="inning-num">1</p>
-            </div>
-            <div className="score-box">
-              <p className="score-display-Home">0</p>
-              <p className="score-display-away">0</p>
-            </div>
-          </section>
-          <section className="inning-section inning-two">
-            <div className="inning-box">
-              <p className="inning-num">2</p>
-            </div>
-            <div className="score-box">
-              <p className="score-display-Home">0</p>
-              <p className="score-display-away">0</p>
-            </div>
-          </section>
-          <section className="inning-section inning-three">
-            <div className="inning-box">
-              <p className="inning-num">3</p>
-            </div>
-            <div className="score-box">
-              <p className="score-display-Home">0</p>
-              <p className="score-display-away">0</p>
-            </div>
-          </section>
-          <section className="inning-section inning-four">
-            <div className="inning-box">
-              <p className="inning-num">4</p>
-            </div>
-            <div className="score-box">
-              <p className="score-display-Home">0</p>
-              <p className="score-display-away">0</p>
-            </div>
-          </section>
-          <section className="inning-section inning-five">
-            <div className="inning-box">
-              <p className="inning-num">5</p>
-            </div>
-            <div className="score-box">
-              <p className="score-display-Home">0</p>
-              <p className="score-display-away">0</p>
-            </div>
-          </section>
-          <section className="inning-section inning-six">
-            <div className="inning-box">
-              <p className="inning-num">6</p>
-            </div>
-            <div className="score-box">
-              <p className="score-display-Home">0</p>
-              <p className="score-display-away">0</p>
-            </div>
-          </section>
-          <section className="inning-section inning-seven">
-            <div className="inning-box">
-              <p className="inning-num">7</p>
-            </div>
-            <div className="score-box">
-              <p className="score-display-Home">0</p>
-              <p className="score-display-away">0</p>
-            </div>
-          </section>
-          <section className="inning-section inning-eight">
-            <div className="inning-box">
-              <p className="inning-num">8</p>
-            </div>
-            <div className="score-box">
-              <p className="score-display-Home">0</p>
-              <p className="score-display-away">0</p>
-            </div>
-          </section>
-          <section className="inning-section inning-nine">
-            <div className="inning-box">
-              <p className="inning-num">9</p>
-            </div>
-            <div className="score-box">
-              <p className="score-display-Home">0</p>
-              <p className="score-display-away">0</p>
-            </div>
-          </section>
-          <section className="inning-section run-total">
-            <div className="inning-box">
-              <p className="inning-num">R</p>
-            </div>
-            <div className="score-box">
-              <p className="score-display-Home total">{this.state.scoreHome}</p>
-              <p className="score-display-away total">{this.state.scoreAway}</p>
-            </div>
-          </section>
-        </div>
+        <Scoreboard
+          scoreAway={this.state.scoreAway}
+          scoreHome={this.state.scoreHome}
+        />
         {this.state.choosePlayer ? (
           <div className="roster-player-choices">
             <Carousel slidesToShow={3} slideWidth={0.6} cellSpacing={10}>

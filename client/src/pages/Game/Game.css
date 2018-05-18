@@ -108,28 +108,7 @@ img{
 .slider-control-bottomcenter{
   display: none;
 }
-/* score board stuff */
-.score-board-box{
-  position: absolute;
-  top:0;
-  left:0;
-  width:30%;
-  background: black;
-  text-align: center;
-  white-space: nowrap;
-  border: 5px solid #779c7e;
-}
-.team-box{
-  display: inline-block;
-  color:white;
-  font-size:20px
-}
-.inning-section{
-  display: inline-block;
-  padding:0 8px;
-  color:white;
-  font-size:20px
-}
+
 
 
 @keyframes pulseBorder {
